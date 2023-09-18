@@ -1,0 +1,76 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,900;1,600;1,900;1,1000&display=swap');
+
+body{
+    background-color: cadetblue;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    width: 55rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.44);
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 100px;
+}
+.topic{
+    background: rgba(0, 0, 0, 0.44);
+    padding: 20px 30px;
+    border-radius: 16px;
+    
+}
+.balance{
+    background: rgba(0, 0, 0, 0.44);
+    padding: 20px 30px;
+    border-radius: 16px;
+}
+
+.sub-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    text-align: left;
+}
+.transactions{
+    background: rgba(0, 0, 0, 0.44);
+    padding: 20px 30px;
+    border-radius: 16px;
+}
+.total-expense{
+    text-align: right;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: cadetblue;
+    margin-left: 10px;
+}

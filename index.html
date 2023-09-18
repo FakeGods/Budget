@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budżet Domowy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="sub-container">
+            <div class="topic">
+        <h1>Budżet Domowy</h1>
+        </div>
+        <div class="balance">
+            <p id="balance-info">Bilans wynosi zero</p>
+        </div>
+        
+        <!-- Przychody -->
+        <div class="transactions">
+            <h2>Przychody</h2>
+            <ul id="income-list">
+            </ul>
+            <div class="add-transaction">
+                <h3>Dodaj Przychód</h3>
+                <input type="text" id="income-name" placeholder="Nazwa przychodu">
+                <input type="number" id="income-amount" placeholder="Kwota">
+                <button id="add-income">Dodaj Przychód</button>
+            </div>
+        </div>
+        <!--Wydatki-->
+        <div class="transactions">
+            <h2>Wydatki</h2>
+            <ul id="expense-list">
+            </ul>
+            <div class="add-transaction">
+                <h3>Dodaj Wydatek</h3>
+                <input type="text" id="expense-name" placeholder="Nazwa wydatku">
+                <input type="number" id="expense-amount" placeholder="Kwota">
+                <button id="add-expense">Dodaj Wydatek</button>
+            </div>
+        </div>
+        <!--Sumy-->
+    </div class="end">
+        <div>
+            <p id="total-income"></p>   
+            <p id="total-expense"></p>
+    <script src="app.js"></script>
+</body>
+</html>
