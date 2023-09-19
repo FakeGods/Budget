@@ -10,11 +10,11 @@ const addExpenseButton = document.getElementById("add-expense");
 const totalIncomeElement = document.getElementById("total-income");
 const totalExpenseElement = document.getElementById("total-expense");
 
-// Inicjalizacja danych budżetowych
+
 let incomeTransactions = [];
 let expenseTransactions = [];
 
-// Funkcja dodająca transakcję
+// dodanie transakcji
 function addTransaction(name, amount, type) {
     if (name === "" || amount <= 0) {
         alert("Wprowadź poprawne dane transakcji.");
@@ -35,7 +35,7 @@ function addTransaction(name, amount, type) {
     updateUI();
 }
 
-// Funkcja obliczająca bilans
+// obliacznie bilansu
 function calculateBalance() {
     const incomeTotal = calculateTotal(incomeTransactions);
     const expenseTotal = calculateTotal(expenseTransactions);
@@ -43,7 +43,7 @@ function calculateBalance() {
     return balance;
 }
 
-// Funkcja aktualizująca interfejs użytkownika
+// interfejs
 function updateUI() {
     clearList(incomeList);
     clearList(expenseList);
@@ -55,7 +55,7 @@ function updateUI() {
     const totalIncome = calculateTotal(incomeTransactions);
     const totalExpense = calculateTotal(expenseTransactions);
 
-    // Aktualizacja bilansu
+    // ktualizacja bilansu
     if (balance > 0) {
         balanceInfo.textContent = `Możesz jeszcze wydać ${balance.toFixed(2)} złotych`;
     } else if (balance < 0) {
@@ -64,7 +64,7 @@ function updateUI() {
         balanceInfo.textContent = "Bilans wynosi zero";
     }
 
-    // Aktualizacja sumy wydatków i przychodów
+   
     totalIncomeElement.textContent = `Suma przychodów: ${totalIncome.toFixed(2)} złotych`;
     totalExpenseElement.textContent = `Suma wydatków: ${totalExpense.toFixed(2)} złotych`;
 
@@ -75,14 +75,14 @@ function updateUI() {
     expenseAmount.value = "";
 }
 
-// Funkcja usuwająca element z listy
+
 function clearList(list) {
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
 }
 
-// Funkcja obliczająca sumę transakcji
+// f sumy transakcji
 function calculateTotal(transactions) {
     let total = 0;
     for (const transaction of transactions) {
@@ -91,7 +91,7 @@ function calculateTotal(transactions) {
     return total;
 }
 
-// Funkcja wyświetlająca transakcje
+
 function displayTransactions(transactions, list, type) {
     for (let i = 0; i < transactions.length; i++) {
         const listItem = createTransactionElement(transactions[i], i, type);
@@ -99,21 +99,19 @@ function displayTransactions(transactions, list, type) {
     }
 }
 
-// Obsługa dodawania przychodów
+// dodawanie przychodów i wydaktów
 addIncomeButton.addEventListener("click", () => {
     const name = incomeName.value;
     const amount = parseFloat(incomeAmount.value);
     addTransaction(name, amount, "income");
 });
 
-// Obsługa dodawania wydatków
 addExpenseButton.addEventListener("click", () => {
     const name = expenseName.value;
     const amount = parseFloat(expenseAmount.value);
     addTransaction(name, amount, "expense");
 });
 
-// Funkcja usuwająca transakcję
 function deleteTransaction(id, type) {
     if (type === "income") {
         incomeTransactions = incomeTransactions.filter((transaction, index) => index !== id);
@@ -124,7 +122,7 @@ function deleteTransaction(id, type) {
     updateUI();
 }
 
-// Funkcja tworząca element listy transakcji
+// lista transakcji
 function createTransactionElement(transaction, id, type) {
     const listItem = document.createElement("li");
     listItem.textContent = `${transaction.name}: ${transaction.amount.toFixed(2)} złotych`;
@@ -140,5 +138,4 @@ function createTransactionElement(transaction, id, type) {
     return listItem;
 }
 
-//interfejs
 updateUI();
