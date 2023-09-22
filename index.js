@@ -9,14 +9,16 @@ const addIncomeButton = document.getElementById("add-income");
 const addExpenseButton = document.getElementById("add-expense");
 const totalIncomeElement = document.getElementById("total-income");
 const totalExpenseElement = document.getElementById("total-expense");
+const addIncomeForm = document.getElementById("addIncomeForm");
+const addExpenseForm = document.getElementById("addExpenseForm");
 
 
-let incomeTransactions = [];
-let expenseTransactions = [];
+const incomeTransactions = [];
+const expenseTransactions = [];
 
 // dodanie transakcji
 function addTransaction(name, amount, type) {
-    if (name === "" || amount <= 0) {
+    if (!name|| amount <= 0) {
         alert("Wprowadź poprawne dane transakcji.");
         return;
     }
@@ -24,8 +26,8 @@ function addTransaction(name, amount, type) {
     const transaction = {
         name,
         amount,
+        id: Math.random(),
     };
-
     if (type === "income") {
         incomeTransactions.push(transaction);
     } else {
@@ -55,7 +57,7 @@ function updateUI() {
     const totalIncome = calculateTotal(incomeTransactions);
     const totalExpense = calculateTotal(expenseTransactions);
 
-    // ktualizacja bilansu
+    // aktualizacja bilansu
     if (balance > 0) {
         balanceInfo.textContent = `Możesz jeszcze wydać ${balance.toFixed(2)} złotych`;
     } else if (balance < 0) {
@@ -91,22 +93,23 @@ function calculateTotal(transactions) {
     return total;
 }
 
-
 function displayTransactions(transactions, list, type) {
     for (let i = 0; i < transactions.length; i++) {
-        const listItem = createTransactionElement(transactions[i], i, type);
+        const listItem = createTransactionElement(transactions[i], type);
         list.appendChild(listItem);
     }
 }
 
 // dodawanie przychodów i wydaktów
-addIncomeButton.addEventListener("click", () => {
+addIncomeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
     const name = incomeName.value;
     const amount = parseFloat(incomeAmount.value);
     addTransaction(name, amount, "income");
 });
 
-addExpenseButton.addEventListener("click", () => {
+addExpenseForm.addEventListener("submit", (event) => {
+    event.preventDefault()
     const name = expenseName.value;
     const amount = parseFloat(expenseAmount.value);
     addTransaction(name, amount, "expense");
@@ -114,16 +117,17 @@ addExpenseButton.addEventListener("click", () => {
 
 function deleteTransaction(id, type) {
     if (type === "income") {
-        incomeTransactions = incomeTransactions.filter((transaction, index) => index !== id);
+        const IndexToRemove = incomeTransactions.findIndex((item) => item.id === id);
+        incomeTransactions.splice(IndexToRemove, 1);
     } else {
-        expenseTransactions = expenseTransactions.filter((transaction, index) => index !== id);
+        expenseTransactions.splice((transaction, index) => index !== id);
     }
 
     updateUI();
 }
 
 // lista transakcji
-function createTransactionElement(transaction, id, type) {
+function createTransactionElement(transaction, type) {
     const listItem = document.createElement("li");
     listItem.textContent = `${transaction.name}: ${transaction.amount.toFixed(2)} złotych`;
 
@@ -131,7 +135,7 @@ function createTransactionElement(transaction, id, type) {
     deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
     deleteButton.classList.add("delete-button");
     deleteButton.addEventListener("click", () => {
-        deleteTransaction(id, type);
+        deleteTransaction(transaction.id, type);
     });
 
     listItem.appendChild(deleteButton);
