@@ -12,56 +12,59 @@
     <div class="container">
         <div class="sub-container">
             <div class="topic">
-        <h1>Budżet Domowy</h1>
-        </div>
-        <div class="balance">
-            <p id="balance-info">Bilans wynosi zero</p>
-        </div>
+                <h1>Budżet Domowy</h1>
+            </div>
+            <div class="balance">
+                <p id="balance-info">Bilans wynosi zero</p>
+            </div>
         
-        <!-- Przychody -->
-        <div class="transactions">
-            <h2>Przychody</h2>
-            <ul id="income-list">
-            </ul>
-            <div class="add-transaction">
-                <h3>Dodaj Przychód</h3>
-                <form id="addIncomeForm">
-                    <input type="text" id="income-name" placeholder="Nazwa przychodu" required>
-                    <input type="number" id="income-amount" placeholder="Kwota"  required>
-                    <input type="submit" id="add-income">
-                </form>
+            <!-- Przychody -->
+            <div class="transactions">
+                <h2>Przychody</h2>
+                <ul id="income-list">
+                </ul>
+                <div class="add-transaction">
+                    <h3>Dodaj Przychód</h3>
+                    <form id="addIncomeForm">
+                        <input type="text" id="income-name" placeholder="Nazwa przychodu" required>
+                        <input type="number" id="income-amount" placeholder="Kwota"  required>
+                        <input type="submit" id="add-income">
+                    </form>
+                </div>
             </div>
-        </div>
-        <!--Wydatki-->
-        <div class="transactions">
-            <h3>Wydatki</h3>
-            <ul id="expense-list">
-            </ul>
-            <div class="add-transaction">
-                <h3>Dodaj Wydatek</h3>
-                <form id="addExpenseForm">
-                    <input type="text" id="expense-name" placeholder="Nazwa wydatku">
-                    <input type="number" id="expense-amount" placeholder="Kwota"  required>
-                    <input type="submit" id="add-expense"></input>
-                </form>    
+            <!--Wydatki-->
+            <div class="transactions">
+                <h2>Wydatki</h2>
+                <ul id="expense-list">
+                </ul>
+                <div class="add-transaction">
+                    <h3>Dodaj Wydatek</h3>
+                    <form id="addExpenseForm">
+                        <input type="text" id="expense-name" placeholder="Nazwa wydatku">
+                        <input type="number" id="expense-amount" placeholder="Kwota"  required>
+                        <input type="submit" id="add-expense">
+                    </form>    
+                </div>
+            </div>       
+            <!--Sumy-->
+            <div class="end">
+                <div>
+                    <p id="total-income"></p>   
+                    <p id="total-expense"></p>
+                </div>
             </div>
-        </div>       
-        <!--Sumy-->
-    <div class="end">
-        <div>
-            <p id="total-income"></p>   
-            <p id="total-expense"></p>
-        </div>
-    </div>
-    <div id="edit-modal" class="modal">
-        <div class="modal-content">
-            <h2>Edycja transakcji</h2>
-            <form id="edit-form">
-                <input type="text" id="edit-name" placeholder="Nazwa">
-                <input type="number" id="edit-amount" placeholder="Kwota">
-                <button type="button" id="edit-save">Zapisz</button>
-                <button type="button" id="edit-cancel">Anuluj</button>
-            </form>
+            <!-- Modal do edycji transakcji -->
+            <div class="modal">
+                <div class="modal-content">
+                    <h2>Edycja transakcji</h2>
+                    <form class="modalForm" id="edit-form">
+                        <input type="text" id="edit-name" placeholder="Nazwa">
+                        <input type="number" id="edit-amount" placeholder="Kwota">
+                        <button type="button" id="edit-save">Zapisz</button>
+                        <button type="button" id="edit-cancel">Anuluj</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <script src="index.js"></script>
