@@ -75,24 +75,19 @@ function updateUI() {
     expenseAmount.value = "";
 }
 function clearList(list) {
-    while (list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
+    list.innerHTML = ""
 }
 
 function calculateTotal(transactions) {
-    let total = 0;
-    for (const transaction of transactions) {
-        total += transaction.amount;
-    }
+    const total = transactions.reduce((prevValue, currValue) => prevValue + currValue.amount, 0);
     return total;
 }
 
 function displayTransactions(transactions, list, type) {
-    for (let i = 0; i < transactions.length; i++) {
-        const listItem = createTransactionElement(transactions[i], type);
-        list.appendChild(listItem);
-    }
+    transactions.forEach((transactions) => {
+        const listItem = createTransactionElement(transaction, type);
+        list.appendChild(listitem);
+    });
 }
 
 
@@ -125,8 +120,6 @@ function deleteTransaction(id, type) {
 function editTransaction(id, type) {
     const transactions = type === "income" ? incomeTransactions : expenseTransactions;
     const transaction = transactions.find((item) => item.id === id);
-
-    if (transaction) {
         const editNameInput = document.getElementById("edit-name");
         const editAmountInput = document.getElementById("edit-amount");
 
@@ -152,7 +145,7 @@ function editTransaction(id, type) {
             modal.style.display = "none";
         });
     }
-}
+
 
 
 function createTransactionElement(transaction, type) {
